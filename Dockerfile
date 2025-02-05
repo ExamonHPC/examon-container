@@ -2,7 +2,8 @@ FROM amd64/python:2.7.13-stretch
 MAINTAINER Francesco Beneventi (francesco.beneventi@unibo.it)
 
 
-RUN echo "deb http://ftp.de.debian.org/debian stretch main non-free" > /etc/apt/sources.list
+RUN echo "deb http://archive.debian.org/debian stretch main non-free" > /etc/apt/sources.list && \
+	echo "Acquire::Check-Valid-Until no;" > /etc/apt/apt.conf.d/100disablechecks
 
 RUN apt-get update && apt-get install -y \
 	libblas-dev \
@@ -19,6 +20,8 @@ RUN apt-get update && apt-get install -y \
 	sshpass \
 	supervisor \
 	nano \
+    apt-transport-https \
+    ca-certificates \
 	&& rm -rf /var/lib/apt/lists/*
 
 COPY ./examon_deploy /etc/examon_deploy

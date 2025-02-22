@@ -23,7 +23,6 @@ RUN apt-get update && apt-get install -y \
 	&& rm -rf /var/lib/apt/lists/*
 
 COPY ./examon_deploy /etc/examon_deploy
-
 COPY ./supervisord.conf /etc/supervisor
 COPY ./supervisor.conf /etc/supervisor/conf.d
 	

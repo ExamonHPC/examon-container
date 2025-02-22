@@ -1,3 +1,5 @@
 examon_deploy/examon/scripts/ve
 *.log
 *.log.*
+*.lock
+*.py.bak

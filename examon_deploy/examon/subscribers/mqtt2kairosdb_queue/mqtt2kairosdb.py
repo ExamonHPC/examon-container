@@ -13,7 +13,6 @@
 
 __version__ = 'v0.3.0' 
 
-import sys
 import json
 import time
 import math
@@ -83,7 +82,7 @@ def worker_http(conf, data_queues_index):
     def _is_valid(tpc):
         ret = ''
         if (len(tpc) % 2) == 0:
-            ret += "Uncorrect size, "
+            ret += "Incorrect size, "
         if "plugin" not in tpc:
             ret += "Missing plugin tag, "
         if "chnl" not in tpc:
@@ -97,12 +96,12 @@ def worker_http(conf, data_queues_index):
     try:
         kd = KairosDB(conf['K_SERVERS'], conf['K_PORT'], conf['K_USER'], conf['K_PASSWORD'])
         kd.put_metrics(list(metrics_db.values()))
-    except:
+    except Exception:
         logger.error("Couldn't connect to %(server)s on port %(port)s",
                     {'server': conf['K_SERVERS'], 'port': conf['K_PORT']}, exc_info=True)
         return
 
-    logger.info("Succesfully connected to %(server)s on port %(port)s",
+    logger.info("Successfully connected to %(server)s on port %(port)s",
                 {'server': conf['K_SERVERS'], 'port': conf['K_PORT']})
 
     timerThread2 = threading.Thread(target=timer_handler,

@@ -187,7 +187,7 @@ def worker_mqtt(conf, intopic, data_queues_index):
 
     def process(client, msg):
         global stats_msg_cntr
-        msg_queue[data_queues_index].put((msg.topic, msg.payload))
+        msg_queue[data_queues_index].put((msg.topic, (msg.payload).decode("utf-8")))
         stats_msg_cntr += 1
 
     mqtt = Mqtt(conf['MQTT_BROKER'], conf['MQTT_PORT'], intopic=intopic)

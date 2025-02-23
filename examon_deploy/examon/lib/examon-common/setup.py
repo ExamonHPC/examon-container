@@ -18,3 +18,4 @@ setup(name='examon-common',
           'pytest-mock == 3.14.0'
       ],
       zip_safe=False)
+

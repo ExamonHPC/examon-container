@@ -58,7 +58,10 @@ def flush_db_worker(kd):
                     len(list(metrics_db.values())), data_len)
         if verbose:
             logger.debug("Db payload: %s", json.dumps(list(metrics_db.values()), indent=4))
-        kd.put_metrics(list(metrics_db.values()))
+        try:
+            kd.put_metrics(list(metrics_db.values()))
+        except Exception:
+            logger.error("Flush worker: Unable to delivery the payload", exc_info=True)
         for k in metrics_db:
             metrics_db[k]['datapoints'] = []
         data_len = 0

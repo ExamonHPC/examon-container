@@ -26,8 +26,6 @@ COPY ./examon_deploy /etc/examon_deploy
 COPY ./supervisord.conf /etc/supervisor
 COPY ./supervisor.conf /etc/supervisor/conf.d
 	
-RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-
 ENV EXAMON_HOME /etc/examon_deploy/examon
 
 WORKDIR $EXAMON_HOME/scripts

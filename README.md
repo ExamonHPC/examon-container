@@ -3,7 +3,7 @@
 ## Build
 
 ```bash
-docker build -t examonhpc/examon:0.3.0 .
+docker build -t examonhpc/examon:0.3.1 .
 ```
 
 ## Run
@@ -16,6 +16,6 @@ docker run -d --name examon_0 \
 -p 1883:1883 \
 -p 9001:9001 \
 -e EX_KAIROSDB_HOST=127.0.0.1 \
-examonhpc/examon:0.3.0
+examonhpc/examon:0.3.1
 ```
 

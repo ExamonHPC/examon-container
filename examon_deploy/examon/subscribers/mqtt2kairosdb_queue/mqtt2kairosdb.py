@@ -11,7 +11,7 @@
     
 """
 
-__version__ = 'v0.3.0' 
+__version__ = 'v0.3.1' 
 
 import json
 import time
@@ -26,6 +26,7 @@ from examon.plugin.examonapp import ExamonApp
 from examon.db.kairosdb import KairosDB
 from examon.transport.mqtt import Mqtt
 from multiprocessing import SimpleQueue
+from urllib.parse import unquote
 
 
 def msg_rate():
@@ -162,6 +163,7 @@ def worker_http(conf, data_queues_index):
                 logger.warning("Invalid topic: %s - %s", topic, ret)
                 lock.release()
                 continue
+            tpc = [unquote(t) for t in tpc]
             tags_tpc = {}
             for k in range(0, len(tpc)-2, 2):
                 tags_tpc[tpc[k]] = tpc[k+1]

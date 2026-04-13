@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build -t examonhpc/examon:0.3.2 .
+docker build -t examonhpc/examon:0.3.3 .
 

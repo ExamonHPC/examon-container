@@ -1,7 +1,7 @@
 FROM python:3.12
 
 # Define version variable
-ENV EXAMON_COMMON_VERSION=v0.2.6
+ENV EXAMON_COMMON_VERSION=v0.2.7
 
 RUN echo "deb https://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware" > /etc/apt/sources.list
 
